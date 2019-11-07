@@ -1,0 +1,17 @@
+{
+    "title":"GUI GU",
+    "welcome":"Welcome",
+    "exit":"Exit",
+    "menus":{
+        "home":"HOME",
+        "products":"Products",
+        "category":"Category",
+        "product":"Product",
+        "user":"User",
+        "role":"Role",
+        "charts":"Charts",
+        "line":"Line",
+        "bar":"Bar",
+        "pie":"Pie"
+    }
+}
