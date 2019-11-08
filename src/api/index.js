@@ -10,3 +10,36 @@ export const reqLogin = (username,password)=>ajax({
         password
     }
 })
+//获取分类信息的接口
+export const reqCategories=()=>ajax({
+    method:'GET',
+    url:'/category/get'
+})
+
+//添加分类信息数据的接口
+export const reqAddCategory=(categoryName)=>ajax({
+    method:'POST',
+    url:'/category/add',
+    data:{
+        categoryName
+    }
+})
+
+//更新分类信息数据的接口
+export const reqUpdateCategory=(categoryId,categoryName)=>ajax({
+    method:'POST',
+    url:'/category/update',
+    data:{
+        categoryId,
+        categoryName
+    }
+})
+
+//删除分类信息的数据接口
+export const reqDeleteCategory=(categoryId)=>ajax({
+    method:'POST',
+    url:'/category/delete',
+    data:{
+        categoryId
+    }
+})

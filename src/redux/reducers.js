@@ -1,4 +1,4 @@
-import { SAVE_USER,REMOVE_USER,UPDATE_TITLE} from "./action-types";
+import { SAVE_USER,REMOVE_USER,UPDATE_TITLE,GET_CATEGORIES,ADD_CATEGORY,UPDATE_CATEGORY,DEL_CATEGORY} from "./action-types";
 //引入redux
 import {combineReducers} from 'redux'
 
@@ -46,7 +46,30 @@ function title(prevState='',action){
     }
 }
 
+//对分类的信息数据做相关的操作
+function categories(prevState=[],action){
+    switch (action.type) {
+        case GET_CATEGORIES:
+          return action.data  
+        case ADD_CATEGORY:
+            return [...prevState,action.data]  
+        case UPDATE_CATEGORY:
+            return prevState.map(category=>{
+                if(category._id===action.data._id){
+                    return action.data
+                }else{
+                    return category
+                }
+            })  
+        case DEL_CATEGORY:
+            return prevState.filter(category=>(category._id!==action.data))      
+        default:
+            return prevState          
+    }
+}
+
 export default combineReducers({
     user,
-    title
+    title,
+    categories
 })

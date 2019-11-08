@@ -17,13 +17,16 @@ axios.defaults.baseURL='http://localhost:3000/api'
 axios.interceptors.request.use((config)=>{
     //获取config对象中的data参数
     let data =config.data
-    config.data=qs.stringify(data)
+    if(data instanceof Object){
+        config.data=qs.stringify(data)
+    }
+  
     //先获取token---store中----redux--getState().user.token
     const token = store.getState().user.token
     //判断---token是否存在
     if(token){
         //token 存放在了请求头的authorization---后台在获取请求的时候,会从请求头中的authorization中找,是否有token,如果有token则进行解密
-        config.authorization = token
+        config.headers.authorization ="Bearer " + token
     }
     return config
 })

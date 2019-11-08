@@ -1,6 +1,5 @@
-import Login from '../containers/Login/Login.jsx'
 import Admin from '../components/Admin/Admin.jsx'
-import Category from '../components/category/Category.jsx'
+import Category from '../containers/category/Category.jsx'
 import Product from '../components/product/Product.jsx'
 import User from '../components/user/User.jsx'
 import Role from '../components/role/Role.jsx'

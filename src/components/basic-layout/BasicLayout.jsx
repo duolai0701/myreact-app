@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Layout, Breadcrumb } from 'antd';
+import { Layout } from 'antd';
 import logo from '../../assets/images/logo.png'
 //引入样式
 import './BasicLayout.less'
@@ -12,7 +12,7 @@ import HeaderMain from '../../components/header-main/HeaderMain.jsx'
 //引入实现国际化的翻译的相关的包,高阶组件
 import {withTranslation } from 'react-i18next';
 
-const { Header, Content, Footer, Sider } = Layout;
+const { Content, Footer, Sider } = Layout;
 
 //国际化高阶组件
 @withTranslation()
