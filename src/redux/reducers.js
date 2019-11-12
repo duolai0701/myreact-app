@@ -1,4 +1,4 @@
-import { SAVE_USER,REMOVE_USER,UPDATE_TITLE,GET_CATEGORIES,ADD_CATEGORY,UPDATE_CATEGORY,DEL_CATEGORY} from "./action-types";
+import { SAVE_USER,REMOVE_USER,UPDATE_TITLE,GET_CATEGORIES,ADD_CATEGORY,UPDATE_CATEGORY,DEL_CATEGORY,GET_ROLES,ADD_ROLE,UPDATE_ROLE,DELETE_ROLE,GET_USERS,ADD_USER,UPDATE_USER,DELETE_USER} from "./action-types";
 //引入redux
 import {combineReducers} from 'redux'
 
@@ -68,8 +68,44 @@ function categories(prevState=[],action){
     }
 }
 
+//对角色信息数据做相关的操作
+function roles(prevState=[],action){
+    switch (action.type) {
+        case GET_ROLES:
+            return action.data
+        case ADD_ROLE:
+            return [...prevState,action.data]
+        case UPDATE_ROLE:
+            return prevState.map(role=>{
+                if(role._id===action.data._id){
+                    return action.data
+                }else{
+                    return role
+                }
+            })
+        case DELETE_ROLE:
+            return prevState.filter(role=>role._id!==action.data)            
+        default:
+            return prevState
+         
+    }
+}
+
+
+//对用户信息数据做相关的操作
+function users(prevState=[],action){
+    switch (action.type) {
+        case GET_USERS:
+            return action.data
+        default:
+         return prevState
+    }
+}
+
 export default combineReducers({
     user,
     title,
-    categories
+    categories,
+    roles,
+    users
 })

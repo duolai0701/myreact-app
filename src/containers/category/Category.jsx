@@ -85,11 +85,11 @@ class category extends Component {
     }
     //隐藏添加分类的对话框
     hideAdd=()=>{
+        delete this.category
         //重置AddUpdateCategory组件中的文本框中的数据
         this.form.resetFields()	//清空所有文本框的数据
         this.setState({
             isShowAdd:false
-            
         })
     }
     //确定更新分类数据的操作

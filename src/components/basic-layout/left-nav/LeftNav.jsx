@@ -68,7 +68,7 @@ class LeftNav extends Component {
                 for(let j=0;j<menu.children.length;j++){
                     // cMenu是当前这个一级菜单中所有的二级菜单对象{key:'路径',icon,title}
                     const cMenu = menu.children[j]
-                    if(cMenu.key===pathname){
+                    if(pathname.startsWith(cMenu.key)){
                         //获取该二级菜单的一级菜单的key
                         return menu.key
                     }
@@ -87,7 +87,7 @@ class LeftNav extends Component {
                 for(let j=0;j<menu.children.length;j++){
                     //当前数组中每个对象(子的菜单)
                     const cMenu = menu.children[j]
-                    if(cMenu.key===pathname){
+                    if(pathname.startsWith(cMenu.key)){
                         return cMenu.title 
                     }
                 }
@@ -102,6 +102,7 @@ class LeftNav extends Component {
     componentDidMount(){
         //获取路径
         const {pathname} = this.props.location
+       
         //根据路径找对应的title
         const title = this.findTitleByKey(pathname)
         //更新redux中的title数据
@@ -122,8 +123,10 @@ class LeftNav extends Component {
         //调用方法显示菜单
         const menus = this.createMenus()
         //获取当前组件的相对应的路径 ,如果要使用location对象,当前的组件要么有location属性,要么当前的组件应该是一个路由组件
-        const {pathname} = this.props.location
+        let {pathname} = this.props.location
+        pathname = pathname.startsWith('/product')?'/product':pathname
         //defaultSelectedKeys 设置默认的菜单被选中(key的属性值,遍历生成标签的时候,key的属性值都是读取出来的,路径)
+        
 
         //如果一个二级菜单被选中了,那么此时这个二个菜单对应的这个一级菜单就要被展开,defaultOpenKeys=一级菜单的路径
         // 每个标签中的key中存储的都是路径

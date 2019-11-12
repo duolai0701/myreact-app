@@ -43,3 +43,124 @@ export const reqDeleteCategory=(categoryId)=>ajax({
         categoryId
     }
 })
+
+//获取商品信息数据的接口
+export const reqGetProducts = (pageNum,pageSize)=>ajax({
+    method:'GET',
+    url:'/product/list',
+    params:{
+        pageNum,
+        pageSize
+    }
+})
+
+//添加商品信息数据的接口
+export const reqAddProduct = ({categoryId,name,price,desc,detail})=>ajax({
+    method:'POST',
+    url:'/product/add',
+    data:{
+        categoryId,
+        name,
+        price,
+        desc,
+        detail
+
+    }
+})
+
+//更新商品信息数据的接口
+export const reqUpdateProduct = ({productId,categoryId,name,price,desc,detail})=>ajax({
+    method:'POST',
+    url:'/product/update',
+    data:{
+        productId,
+        categoryId,
+        name,
+        price,
+        desc,
+        detail
+    }
+})
+
+//删除商品信息数据的接口
+export const reqDeleteProduct = (productId)=>ajax({
+    method:'POST',
+    url:'/product/delete',
+    data:{
+        productId
+    }
+})
+
+//搜索商品信息的数据接口
+export const reqSearchProduct = ({searchKey,searchValue,pageNum,pageSize})=>ajax({
+    method:'GET',
+    url:'/product/search',
+    params:{
+        [searchKey]:searchValue,
+        pageNum,
+        pageSize
+    }
+})
+
+//获取角色的信息数据的接口
+export const reqGetRoles = ()=>ajax('/role/get')
+
+//添加角色信息数据的接口
+export const reqAddRole=(name)=>ajax({
+    method:'POST',
+    url:'/role/add',
+    data:{
+        name
+    }
+})
+//修改角色信息数据的接口
+export const reqUpdateRole=(roleId,authName,menus)=>ajax({
+    method:'POST',
+    url:'/role/update',
+    data:{
+        roleId,
+        authName,
+        menus
+    }
+})
+//删除角色信息数据的接口
+export const reqDeleteRole=(roleId)=>ajax({
+    method:'POST',
+    url:'/role/delete',
+    data:{
+        roleId
+    }
+})
+
+
+//获取用户的信息数据的接口
+export const reqGetUsers=()=>ajax('/user/get')
+//添加用户的信息数据的接口
+export const reqAddUser=({username,password,phone,email,roleId})=>ajax({
+    method:'POST',
+    url:'/user/add',
+    data:{
+        username,
+        password,
+        phone,
+        email,
+        roleId
+    }
+})
+//修改用户的信息数据的接口
+export const reqUpdateUser=(username,password)=>ajax({
+    method:'POST',
+    url:'/user/update',
+    data:{
+        username,
+        password
+    }
+})
+//删除用户的信息数据的接口
+export const reqDeleteUser=(username)=>ajax({
+    method:'POST',
+    url:'/user/delete',
+    data:{
+        username
+    }
+})
